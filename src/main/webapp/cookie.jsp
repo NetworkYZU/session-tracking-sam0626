@@ -14,17 +14,19 @@
     <body>
         <h1>Hello World!</h1>
         <%
-            String food="";
-            Cookie [] cookies=request.getCookies();
-            for(Cookie cookie : cookies){
-                if(cookie.getName().equals("food")){
-                    food=cookie.getValue();
-                    break;
+            String food = "";
+            Cookie[] cookies = request.getCookies();
+            if (cookies != null) {
+                for (Cookie cookie : cookies) {
+                    if (cookie.getName().equals("food")) {
+                        food = cookie.getValue();
+                        break;
+                    }
                 }
             }
         %>
         <form action="saveCookie" method="POST">
-            Your Favorite Food: <input type="text" name="food" value="<%=food%>"/><br/>
+            Your Favorite Food: <input type="text" name="food" value="<%=food%>"/><br/>          
             <input type="submit"/>
         </form>
     </body>
